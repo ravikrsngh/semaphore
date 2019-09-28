@@ -1,0 +1,178 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SEMAPHORE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Style all font awesome icons */
+    .fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+  .fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background:;
+  color: white;
+}
+
+/* Twitter */
+.fa-instagram {
+  background:;
+  color: white;
+}
+    .abc {
+      /* The image used */
+  background-image: url("{% static 'images/mb.jpg' %}");
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: repeat;
+  background-size:1000px;
+
+  /* Needed to position the navbar */
+  position: relative;
+    }
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none;
+    }
+  }
+  </style>
+</head>
+<body class="abc">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="media-left">
+        <img src="{% static 'images/bmsit.png' %}" alt="" style="width:50px">
+      </div>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="{% url 'app:home' %}">HOME</a></li>
+        <li><a href="{% url 'app:about' %}">ABOUT US</a></li>
+        <!--  <li><a href="{% url 'app:events' %}">EVENTS</a></li> -->
+	<li><a href="{% url 'app:gallery' %}">GALLERY</a></li>
+        <li><a href="{% url 'app:contact' %}">CONTACT US</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="{% url 'app:ulogout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container">
+
+<div class="row header" style="color:white">
+  <div class="cell col-sm-1">
+    <center>Sl.No.</center>
+  </div>
+  <div class="cell col-sm-3">
+    <center>Name</center>
+  </div>
+  <div class="cell col-sm-2">
+    USN
+  </div>
+  <div class="cell col-sm-2">
+    Branch
+  </div>
+  <div class="cell col-sm-1">
+    Semester
+  </div>
+  <div class="cell col-sm-2">
+    Unique ID
+  </div>
+  <div class="cell col-sm-1">
+    Events
+  </div>
+
+    {% for i in m %}
+
+      <div class="row" style="color:white">
+
+          <div class="cell col-sm-1" data-title="Sl.No.">
+        <center>   {{ forloop.counter }}</center>
+
+        </div>
+        <div class="cell col-sm-3" data-title="Name">
+          <center>{{i.user.first_name}} {{i.user.last_name}}</center>
+        </div>
+        <div class="cell col-sm-2" data-title="USN">
+          {{i.usn}}
+        </div>
+        <div class="cell col-sm-2" data-title="Branch">
+          {{i.branch}}
+        </div>
+        <div class="cell col-sm-1" data-title="Semester">
+          {{i.sem}}
+        </div>
+        <div class="cell col-sm-2" data-title="Unique ID">
+          {{i.user.username}}
+        </div>
+        <div class="cell col-sm-1" data-title="Events">
+          {{i.eve}}
+        </div>
+
+      </div>
+
+    {% endfor %}
+  </div>
+  <a href="{% url 'app:profile' user.pk %}"><button type="button" name="button">Go Back</button></a>
+</div>
+
+
+
+
+
+
+
+</body>
+</html>

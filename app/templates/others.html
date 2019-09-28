@@ -1,0 +1,180 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>SEMAPHORE</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Style all font awesome icons */
+    .button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #4CAF50;
+  font-size: 24px; /* Green */
+}
+    .fa {
+  padding: 20px;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* Add a hover effect if you want */
+  .fa:hover {
+  opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.fa-facebook {
+  background:;
+  color: white;
+}
+
+/* Twitter */
+.fa-instagram {
+  background:;
+  color: white;
+}
+    .abc {
+      /* The image used */
+  background-image: url("{% static 'images/mb.jpg' %}");
+
+  min-height: 380px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: epeat;
+  background-size:1700px;
+
+  /* Needed to position the navbar */
+  position: relative;
+    }
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none;
+    }
+  }
+  </style>
+</head>
+<body class="abc">
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="media-left">
+        <img src="{% static 'images/bmsit.png' %}" alt="" style="width:50px">
+      </div>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class=""><a href="{% url 'app:home' %}">HOME</a></li>
+        <li><a href="{% url 'app:about' %}">ABOUT US</a></li>
+        <!--  <li><a href="{% url 'app:events' %}">EVENTS</a></li> -->
+	<li><a href="{% url 'app:gallery' %}">GALLERY</a></li>
+        <li><a href="{% url 'app:contact' %}">CONTACT US</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <a href="{% url 'app:ulogout' %}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <div class="container" style="color:white">
+    <div style="margin-top:-300px;" class="limiter">
+  		<div class="container-table100">
+  			<div class="wrap-table100">
+  					<div class="table">
+
+  						<div class="row header">
+  							<div class="cell">
+  								S No.
+  							</div>
+  							<div class="cell">
+  								Marketers
+  							</div>
+  							<div class="cell">
+  								<center>No. of REGISTRATIONS</center>
+  							</div>
+  						</div>
+
+              {% for i in m %}
+
+
+  	           <div class="row">
+
+  								 <div class="cell" data-title="S no.">
+   	                {{ forloop.counter }}
+
+  							 </div>
+
+  								 <div class="cell" data-title="Marketers">
+   	                <a class="" href="{% url 'app:other_view' user.pk i.user.pk %}" value="">{{i.user.first_name}} {{i.user.last_name}}</a>
+
+  							 </div>
+  							 <div class="cell" data-title="No. of REGISTRATIONS">
+  								<center> {{i.t_reg}}</center>
+  						 </div>
+
+
+  						</div>
+
+              {% endfor %}
+
+
+
+
+
+
+  					</div>
+  			</div>
+  		</div>
+  	</div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
