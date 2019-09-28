@@ -23,7 +23,7 @@ STATIC_DIR=os.path.join(BASE_DIR,"static")
 SECRET_KEY = '^0ft0tx=!&+cplf4i#w18uzpu1@l!)%9(@4t(38tbydxo_^i-*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -74,13 +74,13 @@ WSGI_APPLICATION = 'semaphore.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation
@@ -129,5 +129,12 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 MEDIA_URL='/media/'
 MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
+
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
+SECRET_KEY = config('SECRET_KEY')
 # db_from_env = dj_databse_url.config(conn_max_age=500)
 # DATABASES['default'].update(db_from_env)
