@@ -58,7 +58,7 @@ PyGoogleVoice==0.5.2
 pypiwin32==223
 python-dateutil==3.7.0
 pytz==2018.5
-pywin32==224
+pywin32==301
 PyYAML==3.13
 qrcode==6.0
 query-string==2018.11.20
